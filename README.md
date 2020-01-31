@@ -22,7 +22,7 @@ Software Engineering Project Group 2.
         sudo -E docker-compose up --build
         ```
 
-    * If docker is blocked in your country you have 2 options:
+    * If docker is blocked in your country you have 2 options (second one is easier):
         * Use a vpn or any [method](https://shecan.ir) to bypass sanctions and do the previous step.
 
         * Download the [python docker image](https://www.dropbox.com/s/tqp8i7r77jloywe/python3.zip?dl=0) as "python3.zip" and run:
