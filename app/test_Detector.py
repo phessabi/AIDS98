@@ -1,5 +1,5 @@
 from unittest import TestCase
-from Detector import Detector
+from .Detector import Detector
 
 
 class TestDetector(TestCase):
