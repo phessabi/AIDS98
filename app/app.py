@@ -18,11 +18,29 @@ def get_header(req):
 @app.route("/<string:action>", methods=["POST"])
 def handle(action):
     if action == 'detect':
+        sentence = request.form['content']
+        words = sentence.split()
+        spam_words = set()
+        for word in random.choices(words, k=3):
+            spam_words.add(word)
+        spam_words_str = ''
+        for word in spam_words:
+            spam_words_str += word + ' - '
+        spam_words_str = spam_words_str[:-3]
         answer = True
         if random.random() > 0.5:
             answer = False
-        return Response(response=json.dumps({'result': str(answer)}), status=200, headers=get_header(request),
-                        mimetype='application/json')
+        if answer:
+            return Response(response=json.dumps({'result': str(answer),
+                                                 'reasons': spam_words_str,
+                                                 })
+                            , status=200, headers=get_header(request),
+                            mimetype='application/json')
+        else:
+            return Response(response=json.dumps({'result': str(answer),
+                                                 'reasons': ''})
+                            , status=200, headers=get_header(request),
+                            mimetype='application/json')
     else:
         return Response(response=json.dumps({'result': "action: " + str(action) + " is not supported!"}), status=422,
                         headers=get_header(request), mimetype='application/json')
