@@ -4,6 +4,11 @@ Software Engineering Project Group 2.
 
 ---
 ## Installation
++ ##### Install docker:
+```
+    sudo apt-get install docker-compose
+```
+
 + ##### If you can access [docker](https://hub.docker.com/) in your country:
 ```
     sudo -E docker-compose up --build
