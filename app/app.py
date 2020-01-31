@@ -1,10 +1,10 @@
 from flask import Flask, request, Response, make_response, json
 from flask_restful import Resource, Api
-import random
-
+from .Detector import Detector
 
 app = Flask(__name__)
 api = Api(app)
+detector = Detector()
 
 
 def get_header(req):
@@ -20,17 +20,9 @@ def handle(action):
     if action == 'detect':
         sentence = request.form['content']
         print('received content:', sentence)
-        words = sentence.split()
-        spam_words = set()
-        for word in random.choices(words, k=3):
-            spam_words.add(word)
-        spam_words_str = ''
-        for word in spam_words:
-            spam_words_str += word + ' - '
-        spam_words_str = spam_words_str[:-3]
-        answer = True
-        if random.random() > 0.5:
-            answer = False
+        outputs = detector.detect(sentence)
+        answer = outputs['answer']
+        spam_words_str = outputs['spam_words']
         if answer:
             return Response(response=json.dumps({'result': str(answer),
                                                  'reasons': spam_words_str,
