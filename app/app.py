@@ -19,6 +19,7 @@ def get_header(req):
 def handle(action):
     if action == 'detect':
         sentence = request.form['content']
+        print('received content:', sentence)
         words = sentence.split()
         spam_words = set()
         for word in random.choices(words, k=3):
