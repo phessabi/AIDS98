@@ -1,0 +1,10 @@
+language: python
+
+python:
+  - "3.6"
+
+install:
+  - sudo docker-compose up -d builder
+
+script:
+  - sudo docker-compose run test
