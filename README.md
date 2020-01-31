@@ -1,4 +1,4 @@
-# Spam Detection
+# Spam Detection [![Build Status](https://travis-ci.com/phessabi/AIDS98.svg?branch=master)](https://travis-ci.com/phessabi/AIDS98)
 
 Software Engineering Project Group 2.
 
