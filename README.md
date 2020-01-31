@@ -19,7 +19,7 @@ Software Engineering Project Group 2.
 4. Build Docker Image: 
     * If you can access docker in your country (if you can open this [link](https://hub.docker.com/)):
         ```
-        sudo -E docker-compose up --build
+        sudo -E docker-compose up --build builder
         ```
 
     * If docker is blocked in your country you have 2 options (second one is easier):
@@ -37,7 +37,4 @@ Software Engineering Project Group 2.
     sudo docker-compose up app
     ```
 
-2. Then open the "Detect Spam.html" file with:
-    ```
-    chrome
-    ```
+2. Then open the "Detect Spam.html" (located in the root directory of the project that you cloned) with any browser
