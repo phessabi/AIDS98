@@ -1,6 +1,6 @@
 from flask import Flask, request, Response, make_response, json
 from flask_restful import Resource, Api
-from .Detector import Detector
+from Detector import Detector
 
 app = Flask(__name__)
 api = Api(app)
