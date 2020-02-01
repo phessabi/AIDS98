@@ -18,9 +18,7 @@ pipeline {
 	}
 	stage('deploy') {
 	    steps {
-		sh 'chmod u+x deploy'
-		sh 'export PATH=$PATH:.'
-		sh 'deploy web'
+		sh 'python app/app.py 0.0.0.0:5000'
 	    }	
 	}
     }
