@@ -1,26 +1,26 @@
 pipeline {
-    environment {
-        PATH = "$PATH:/usr/bin"
-    }
-
     agent { 
-	dockerfile true 
+	docker { image 'python:3.6-alpine' }
+    }
+    
+    environment {
+	PYTHONUNBUFFERED = 1
     }
 
     stages {
 	stage('build') {
 	    steps {
-		sh 'docker-compose up -d builder'
+		sh 'pip install -r requirements.txt'
 	    }
 	}
 	stage('test') {
 	    steps {
-		sh 'docker-compose run test'
+		sh 'python -m unittest app/test_Detector.py'
 	    }
 	}
 	stage('run') {
 	    steps {
-		sh 'docker-compose run app'
+		sh 'python app/app.py 0.0.0.0:5000'
 	    }	
 	}
     }
