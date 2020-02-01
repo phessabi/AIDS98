@@ -18,8 +18,8 @@ pipeline {
 	}
 	stage('deploy') {
 	    steps {
-		sh 'ls'
-		sh 'echo $ls'
+		sh '$(pwd)/deploy backend'
+		sh '$(pwd)/deploy web'
 	    }	
 	}
     }
