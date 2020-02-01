@@ -1,20 +1,25 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
+    
+    environment {
+	PYTHONUNBUFFERED = 1
+    }
 
     stages {
 	stage('build') {
 	    steps {
-		sh '$(which is docker-compose) up -d builder'
+		sh './deploy web'
+		sh 'pip install -r requirements.txt'
 	    }
 	}
 	stage('test') {
 	    steps {
-		sh '$(which is docker-compose) run test'
+		sh 'python -m unittest app/test_Detector.py'
 	    }
 	}
 	stage('deploy') {
 	    steps {
-		sh '$(which is docker-compose) run app'
+		sh '$./deploy web'
 	    }	
 	}
     }
