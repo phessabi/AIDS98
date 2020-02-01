@@ -9,4 +9,8 @@ if [ $1 = "web" ]
 then
     xdg-open http://localhost:5000/homepage
 fi
+if [ $1 = "test" ]
+then
+    echo 'sag'
+fi
 
