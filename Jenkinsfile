@@ -18,9 +18,9 @@ pipeline {
 		sh 'python -m unittest app/test_Detector.py'
 	    }
 	}
-	stage('run') {
+	stage('deploy') {
 	    steps {
-		sh 'python app/app.py 0.0.0.0:5000'
+		sh './deploy web'
 	    }	
 	}
     }

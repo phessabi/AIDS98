@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+if [ $1 = "backend" ]
+then
+    python app/app.py 0.0.0.0:5000
+fi
+if [ $1 = "web" ]
+then
+    xdg-open http://localhost:5000/homepage
+fi
+
