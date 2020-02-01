@@ -20,7 +20,7 @@ pipeline {
 	    steps {
 		sh 'chmod u+x deploy'
 		sh 'export PATH=$PATH:.'
-		sh './deploy web'
+		sh 'deploy web'
 	    }	
 	}
     }
