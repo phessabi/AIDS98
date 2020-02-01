@@ -1,8 +1,9 @@
-from flask import Flask, request, Response, make_response, json
+from flask import Flask, request, Response, make_response, json, render_template
 from flask_restful import Resource, Api
 from Detector import Detector
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_url_path='', static_folder='templates/static')
 api = Api(app)
 detector = Detector()
 
@@ -37,6 +38,11 @@ def handle(action):
     else:
         return Response(response=json.dumps({'result': "action: " + str(action) + " is not supported!"}), status=422,
                         headers=get_header(request), mimetype='application/json')
+
+
+@app.route("/homepage")
+def page():
+    return render_template("homepage.html", title='Homepage')
 
 
 if __name__ == '__main__':

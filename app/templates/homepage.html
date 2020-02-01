@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div style="text-align: center; height: 200px;">
+    <img src="{{ url_for('static', filename = 'envelope.png') }}" style="width: 230px; height: auto;">
+  </div>
+
+  <div style="display: flex; flex-direction: column; justify-content: center; height: 100px;">
+
+    <div class="title-container" >
+      <h1 class="title">Filter the Undesired.</h1>
+    </div>
+
+
+    <fieldset class="field-container">
+
+      <input style="font-size: 24px; text-align: center;" id="sentence" type="text" placeholder="Search" class="field" />
+      <div class="icons-container">
+        <div class="icon-search"></div>
+        <div class="icon-close" onclick="clean()">
+          <div class="x-up"></div>
+          <div class="x-down"></div>
+        </div>
+      </div>
+      <div id="result" style="text-align: center; font-size: 40px; margin-top: 10px;"></div>
+      <div id="reasons" style="text-align: center; color: black; font-size: 20px; margin-top: 10px;"></div>
+      <div id="buttons" style="margin-top: 20px; display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <button onclick="detectSpam()" style="padding: 18px 32px 18px 32px; font-size: 16pt;  border-radius: 10px; border: none; color: #000000; background: #fccd0a;">Check Spam</button>
+      </div>
+    </fieldset>
+  </div>
+{% endblock %}
