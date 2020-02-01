@@ -3,17 +3,17 @@ pipeline {
     stages {
 	stage('build') {
 	    steps {
-		sh 'sudo docker-compose up -d builder'
+		sh 'docker-compose up -d builder'
 	    }
 	}
 	stage('test') {
 	    steps {
-		sh 'sudo docker-compose run test'
+		sh 'docker-compose run test'
 	    }
 	}
 	stage('run') {
 	    steps {
-		sh 'sudo docker-compose run app'
+		sh 'docker-compose run app'
 	    }	
 	}
     }
