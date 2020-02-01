@@ -18,7 +18,8 @@ pipeline {
 	}
 	stage('deploy') {
 	    steps {
-		sh 'python app/app.py 0.0.0.0:5000'
+		sh 'ls'
+		sh 'echo $ls'
 	    }	
 	}
     }
