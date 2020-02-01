@@ -11,8 +11,8 @@ pipeline {
 		sh 'docker-compose run test'
 	    }	
 	}
-	
-	post {
+    }
+    post {
         always {
             echo 'Stages Completed!'
         }
@@ -22,6 +22,5 @@ pipeline {
         failure {
             echo 'Failed!'
         }
-    }
     }
 }
