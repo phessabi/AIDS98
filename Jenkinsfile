@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'docker-compose up -d builder'
+                sh 'pip install -r requirements.txt'
             }
         }
-	stage('test') {
+	stage('run') {
 	    steps {
-		sh 'docker-compose run test'
+		sh 'echo "RUNNING!"'
 	    }	
 	}
     }
