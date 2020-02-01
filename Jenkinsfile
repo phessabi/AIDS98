@@ -1,20 +1,24 @@
 pipeline {
     agent { dockerfile true }
-
+    environment {
+	COMPOSE = $(which is docker-compose)
+    }
     stages {
 	stage('build') {
 	    steps {
-		docker-compose up -d builder
+		sh 'echo $COMPOSE'
+		sh 'which is docker-compose'
+		sh 'docker-compose up -d builder'
 	    }
 	}
 	stage('test') {
 	    steps {
-		docker-compose run test
+		sh 'docker-compose run test'
 	    }
 	}
 	stage('deploy') {
 	    steps {
-		docker-compose run app
+		sh 'docker-compose run app'
 	    }	
 	}
     }
