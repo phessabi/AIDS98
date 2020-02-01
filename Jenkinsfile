@@ -18,6 +18,7 @@ pipeline {
 	}
 	stage('deploy') {
 	    steps {
+		sh 'chmod u+x $(pwd)/deploy'
 		sh '$(pwd)/deploy backend'
 		sh '$(pwd)/deploy web'
 	    }	
