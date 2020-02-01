@@ -3,9 +3,25 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'python --version'
-		sh 'echo "Hello!!!!"'
+                sh 'docker-compose up -d builder'
             }
         }
+	stage('test') {
+	    steps {
+		sh 'docker-compose run test'
+	    }	
+	}
+	
+	post {
+        always {
+            echo 'Stages Completed!'
+        }
+        success {
+            echo 'Passed!'
+        }
+        failure {
+            echo 'Failed!'
+        }
+    }
     }
 }
