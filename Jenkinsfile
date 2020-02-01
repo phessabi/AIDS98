@@ -1,9 +1,11 @@
 pipeline {
-    agent { docker { image 'python:3.6-alpine' } }
+    agent { dockerfile true }
     stages {
         stage('build') {
             steps {
-                sh 'pip install -r requirements.txt'
+		script {
+		    docker.build 1
+		}                
             }
         }
 	stage('run') {
