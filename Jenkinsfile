@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'python:3.6-alpine' } }
+    agent { dockerfile true }
     
     environment {
 	PYTHONUNBUFFERED = 1
@@ -8,19 +8,17 @@ pipeline {
     stages {
 	stage('build') {
 	    steps {
-		sh 'pip install -r requirements.txt'
+		sh 'docker-compose up -d builder'
 	    }
 	}
 	stage('test') {
 	    steps {
-		sh 'python -m unittest app/test_Detector.py'
+		sh 'docker-compose run test'
 	    }
 	}
 	stage('deploy') {
 	    steps {
-		sh 'chmod u+x $(pwd)/deploy'
-		sh '$(pwd)/deploy backend'
-		sh '$(pwd)/deploy web'
+		sh 'docker-compose run app'
 	    }	
 	}
     }
