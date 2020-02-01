@@ -1,7 +1,6 @@
 pipeline {
     agent { 
 	docker { image 'python:3.6-alpine' }
-	any
     }
     
     environment {
@@ -21,6 +20,7 @@ pipeline {
 	}
 	stage('deploy') {
 	    steps {
+		sh 'chmod u+x deploy'
 		sh './deploy web'
 	    }	
 	}
