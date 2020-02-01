@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { docker { image 'python:3.6-alpine' } }
     
     environment {
 	PYTHONUNBUFFERED = 1
@@ -9,8 +9,6 @@ pipeline {
 	stage('build') {
 	    steps {
 		sh 'pip install -r requirements.txt'
-		sh 'chmod u+x deploy'
-		sh './deploy web'
 	    }
 	}
 	stage('test') {
@@ -21,6 +19,7 @@ pipeline {
 	stage('deploy') {
 	    steps {
 		sh 'chmod u+x deploy'
+		sh 'export PATH=$PATH:.'
 		sh './deploy web'
 	    }	
 	}
