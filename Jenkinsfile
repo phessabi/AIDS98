@@ -1,16 +1,19 @@
 pipeline {
     agent { dockerfile true }
     stages {
-        stage('build') {
-            steps {
-		script {
-		    docker.build 1
-		}                
-            }
-        }
+	stage('build') {
+	    steps {
+		sh 'sudo docker-compose up -d builder'
+	    }
+	}
+	stage('test') {
+	    steps {
+		sh 'sudo docker-compose run test'
+	    }
+	}
 	stage('run') {
 	    steps {
-		sh 'echo "RUNNING!"'
+		sh 'sudo docker-compose run app'
 	    }	
 	}
     }
