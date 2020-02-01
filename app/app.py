@@ -3,7 +3,7 @@ from flask_restful import Resource, Api
 from Detector import Detector
 
 
-app = Flask(__name__, static_url_path='', static_folder='templates/static')
+app = Flask(__name__)
 api = Api(app)
 detector = Detector()
 
@@ -40,9 +40,13 @@ def handle(action):
                         headers=get_header(request), mimetype='application/json')
 
 
-@app.route("/homepage")
-def page():
-    return render_template("homepage.html", title='Homepage')
+@app.route("/")
+@app.route("/<string:page>")
+def pages(page=None):
+    if page == 'homepage':
+        return render_template("homepage.html", title='Homepage')
+    else:
+        return render_template("error.html", title='404')
 
 
 if __name__ == '__main__':
