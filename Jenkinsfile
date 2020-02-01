@@ -1,5 +1,12 @@
 pipeline {
-    agent { dockerfile true }
+    environment {
+        PATH = "$PATH:/usr/bin/docker-compose"
+    }
+
+    agent { 
+	dockerfile true 
+    }
+
     stages {
 	stage('build') {
 	    steps {
@@ -17,6 +24,7 @@ pipeline {
 	    }	
 	}
     }
+
     post {
         always {
             echo 'Stages Completed!'
