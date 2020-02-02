@@ -1,35 +1,43 @@
-pipeline {
+pipeline
+{
     agent none
     
-    environment {
-	PYTHONUNBUFFERED = 1
+    environment
+    {
+	    PYTHONUNBUFFERED = 1
+	    PRODUCT_PATH = '/home/ubuntu/AIDS98'
     }
 
-    stages {
-	stage('pull') {
-	    agent any
-	    steps {
-		sh '$(pwd)/pull'
-	    }	
-	}
-	stage('build') {
-	    agent { docker { image 'python:3.6-alpine' } }
-	    steps {
-		sh 'pip install -r requirements.txt'
-	    }
-	}
-	stage('test') {
-	    agent { docker { image 'python:3.6-alpine' } }
-	    steps {
-		sh 'python -m unittest app/test_Detector.py'
-	    }
-	}
-	stage('deploy') {
-	    agent any
-	    steps {
-		sh '$(pwd)/deploy'
-	    }	
-	}
+    stages
+    {
+        stage('pull')
+        {
+            agent any
+            steps
+            {
+                sh '$(pwd)/pull'
+            }
+        }
+        stage('build and test')
+        {
+            agent
+            {
+                dockerfile true
+            }
+            steps
+            {
+                sh 'pip install -r requirements.txt'
+                sh 'python -m unittest app/test_Detector.py'
+            }
+        }
+        stage('deploy')
+        {
+            agent any
+            steps
+            {
+                sh '$(pwd)/deploy ${PRODUCT_PATH}'
+            }
+        }
     }
 
     post {
@@ -44,5 +52,3 @@ pipeline {
         }
     }
 }
-
-// TODO: SAVE THE LATEST SUCCESSFUL BUILD SOMEHOW
