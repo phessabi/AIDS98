@@ -12,8 +12,8 @@ services:
 
   app:
     build: .
-    command: python app/app.py 0.0.0.0:5000
+    command: python app/app.py 0.0.0.0:5001
     volumes:
       - .:/code
     ports:
-      - "5000:5000"
+      - "5001:5001"
