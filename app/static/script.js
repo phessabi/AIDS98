@@ -15,7 +15,7 @@ $('.field').on('blur', function() {
 });
 function detectSpam() {
 var inp = $('#sentence').val();
-$.post( "http://localhost:5000/detect",{content: inp}, function( data ) {
+$.post( "http://0.0.0.0:5000/detect",{content: inp}, function( data ) {
   var result = data.result;
   var reasons = data.reasons;
   var pretext = ''
