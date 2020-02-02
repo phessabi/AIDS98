@@ -26,7 +26,6 @@ pipeline
             }
             steps
             {
-                sh 'pip install -r requirements.txt'
                 sh 'python -m unittest app/test_Detector.py'
             }
         }
