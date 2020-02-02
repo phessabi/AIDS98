@@ -11,6 +11,8 @@ class Detector:
     def detect(self, sentence):
         model = self.model
         words = sentence.split()
+        if len(words) == 0:
+            return {'answer': False, 'spam_words': ''}
         spam_words = set()
         for word in random.choices(words, k=3):
             spam_words.add(word)

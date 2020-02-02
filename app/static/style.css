@@ -46,12 +46,6 @@
   text-shadow: none;
 }
 
-::-webkit-selection {
-  background: #6078EA;
-  color: white;
-  text-shadow: none;
-}
-
 body {
   font-family: 'Montserrat', 'Helevtica', sans-serif;
   background-color: #f2ecec;
@@ -288,4 +282,13 @@ body.is-focus {
   opacity: 0;
   -webkit-transform: translateX(200%);
   transform: translateX(200%);
+}
+
+.button {
+  padding: 18px 32px 18px 32px;
+  font-size: 16pt;
+  border-radius: 10px;
+  border: none;
+  color: #000000;
+  background: #fccd0a;
 }
