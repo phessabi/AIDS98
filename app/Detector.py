@@ -21,4 +21,4 @@ class Detector:
         answer = True
         if random.random() > 0.5:
             answer = False
-        return {'answer': answer, 'spam_words': spam_words_str}
+        # return {'answer': answer, 'spam_words': spam_words_str}
