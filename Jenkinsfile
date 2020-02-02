@@ -37,10 +37,12 @@ pipeline {
             echo 'Stages Completed!'
         }
         success {
-            echo 'Passed!'
+            echo 'Passed! Deploying Changes...'
         }
         failure {
-            echo 'Failed!'
+            echo 'Failed! Ignoring Changes...'
         }
     }
 }
+
+// TODO: SAVE THE LATEST SUCCESSFUL BUILD SOMEHOW
