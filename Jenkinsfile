@@ -21,7 +21,7 @@ pipeline {
 	stage('deploy') {
 	    agent any
 	    steps {
-		sh '$(pwd)/deploy test'
+		sh '$(pwd)/deploy'
 	    }	
 	}
     }
