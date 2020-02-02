@@ -6,6 +6,12 @@ pipeline {
     }
 
     stages {
+	stage('pull') {
+	    agent any
+	    steps {
+		sh '$(pwd)/pull'
+	    }	
+	}
 	stage('build') {
 	    agent { docker { image 'python:3.6-alpine' } }
 	    steps {
