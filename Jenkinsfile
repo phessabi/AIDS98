@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'python:3.6-alpine' } }
+    agent none
     
     environment {
 	PYTHONUNBUFFERED = 1
@@ -7,11 +7,13 @@ pipeline {
 
     stages {
 	stage('build') {
+	    agent { docker { image 'python:3.6-alpine' } }
 	    steps {
 		sh 'pip install -r requirements.txt'
 	    }
 	}
 	stage('test') {
+	    agent { docker { image 'python:3.6-alpine' } }
 	    steps {
 		sh 'python -m unittest app/test_Detector.py'
 	    }
@@ -19,7 +21,7 @@ pipeline {
 	stage('deploy') {
 	    agent any
 	    steps {
-		sh '$./deploy test'
+		sh '$(pwd)/deploy test'
 	    }	
 	}
     }
