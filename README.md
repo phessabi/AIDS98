@@ -4,10 +4,7 @@ Software Engineering Project Group 2.
 
 ---
 ## Installation
-1. Install Docker:
-    ```
-    sudo apt-get install docker-compose
-    ```
+1. Install [Docker](https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04):
 2. Get the Project:
     ```
     git clone "https://github.com/phessabi/AIDS98"
@@ -37,4 +34,8 @@ Software Engineering Project Group 2.
     sudo docker-compose up app
     ```
 
-2. Then open the "Detect Spam.html" (located in the root directory of the project that you cloned) with any browser
+2. Then open the [localhost:5000/homepage](localhost:5000/homepage) on your browser
+
+## Deployment
+
++ The application is currently running [here](http://194.5.192.129:5000/homepage)
