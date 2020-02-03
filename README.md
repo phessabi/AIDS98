@@ -4,19 +4,21 @@ Software Engineering Project Group 2.
 
 ---
 ## Installation
-1. Install [Docker](https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04) and then install docker-compose with:
+1. Install [Docker](https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04) 
+
+2. Install docker-compose:
     ```
     sudo apt install docker-compose
     ```
-2. Get the Project:
+3. Get the Project:
     ```
     git clone "https://github.com/phessabi/AIDS98"
     ``` 
-3. Go to the Root Directory:
+4. Go to the Root Directory:
     ```
     cd AIDS98
     ```    
-4. Build Docker Image: 
+5. Build Docker Image: 
     * If you can access docker in your country (if you can open this [link](https://hub.docker.com/)):
         ```
         sudo -E docker-compose up --build builder
