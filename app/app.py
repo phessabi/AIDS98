@@ -16,6 +16,7 @@ def get_header(req):
     }
 
 
+
 @app.route("/<string:action>", methods=["POST"])
 def handle(action):
     if action == 'detect':
