@@ -3,10 +3,15 @@ language: python
 python:
   - "3.6"
 
+env:
+  global:
+    - COMMITER: $(git --no-pager show -s --format=\%ae)
+
 notifications:
   email:
     recipients:
       - $(git --no-pager show -s --format=\%ae)
+      - ${COMMITER}
       - parham.hesssabi@gmail.com
     on_success: always # default: change
     on_failure: always # default: always
@@ -15,5 +20,6 @@ install:
   - sudo docker-compose up -d builder
 
 script:
+  - echo ${COMMITER}
   - git --no-pager show -s --format=\%ae
   - sudo docker-compose run test
