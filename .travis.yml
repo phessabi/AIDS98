@@ -10,7 +10,7 @@ env:
 notifications:
   email:
     recipients:
-      - $(git --no-pager show -s --format=\%ae)
+      - hessabi@netbina.com
       - ${COMMITER}
       - parham.hesssabi@gmail.com
     on_success: always # default: change
@@ -21,5 +21,4 @@ install:
 
 script:
   - echo ${COMMITER}
-  - git --no-pager show -s --format=\%ae
   - sudo docker-compose run test
